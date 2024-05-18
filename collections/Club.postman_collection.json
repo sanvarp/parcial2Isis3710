@@ -1,0 +1,672 @@
+{
+	"info": {
+		"_postman_id": "46774087-f9ae-4502-8b83-1db906f30af8",
+		"name": "Club",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25545280",
+		"_collection_link": "https://isis2603-202310-s4-e6-streaming-back.postman.co/workspace/Workspace-WEB~f4c92f2c-812b-4f94-a765-ad03630be70c/collection/25545280-46774087-f9ae-4502-8b83-1db906f30af8?action=share&source=collection_link&creator=25545280"
+	},
+	"item": [
+		{
+			"name": "Crear Club",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.environment.set(\"club_id\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Nogales\",\r\n    \"fechaDeFundacion\":\"1980-10-10\",\r\n    \"descripcion\":\"El mejor club del mundo mundial\",\r\n    \"imagen\":\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEZm8xsQj1ubVd9SSW_f_zjRvQSpKHyAqQ1ys5F7S6Obi_mhEUN_ghcBvO6rzKfHDHSuM&usqp=CAU\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/clubs",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"clubs"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear Club",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\":\"Nogales\",\r\n    \"fechaDeFundacion\":\"1980-10-10\",\r\n    \"descripcion\":\"El mejor club del mundo mundial\",\r\n    \"imagen\":\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEZm8xsQj1ubVd9SSW_f_zjRvQSpKHyAqQ1ys5F7S6Obi_mhEUN_ghcBvO6rzKfHDHSuM&usqp=CAU\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/clubs",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"clubs"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"nombre\": \"Nogales\",\n    \"fechaDeFundacion\": \"1980-10-10\",\n    \"descripcion\": \"El mejor club del mundo mundial\",\n    \"imagen\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEZm8xsQj1ubVd9SSW_f_zjRvQSpKHyAqQ1ys5F7S6Obi_mhEUN_ghcBvO6rzKfHDHSuM&usqp=CAU\",\n    \"id\": \"bca711e3-13da-4dea-9a50-a24db161dccf\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Crear Club Inválido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {\r",
+							"   pm.response.to.have.status(412);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"Description exceeds maximum length\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Nogales\",\r\n    \"fechaDeFundacion\":\"1980-10-10\",\r\n    \"descripcion\":\"El mejor club del mundo mundial, El mejor club del mundo mundial,El mejor club del mundo mundial,El mejor club del mundo mundial,El mejor club del mundo mundial,El mejor club del mundo mundial,El mejor club del mundo mundial,El mejor club del mundo mundial,El mejor club del mundo mundial,El mejor club del mundo mundial,El mejor club del mundo mundial,El mejor club del mundo mundial\",\r\n    \"imagen\":\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEZm8xsQj1ubVd9SSW_f_zjRvQSpKHyAqQ1ys5F7S6Obi_mhEUN_ghcBvO6rzKfHDHSuM&usqp=CAU\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/clubs",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"clubs"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear Club Inválido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\":\"Nogales\",\r\n    \"fechaDeFundacion\":\"1980-10-10\",\r\n    \"descripcion\":\"El mejor club del mundo mundial, El mejor club del mundo mundial,El mejor club del mundo mundial,El mejor club del mundo mundial,El mejor club del mundo mundial,El mejor club del mundo mundial,El mejor club del mundo mundial,El mejor club del mundo mundial,El mejor club del mundo mundial,El mejor club del mundo mundial,El mejor club del mundo mundial,El mejor club del mundo mundial\",\r\n    \"imagen\":\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEZm8xsQj1ubVd9SSW_f_zjRvQSpKHyAqQ1ys5F7S6Obi_mhEUN_ghcBvO6rzKfHDHSuM&usqp=CAU\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/clubs",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"clubs"
+							]
+						}
+					},
+					"status": "Precondition Failed",
+					"code": 412,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 412,\n    \"message\": \"Description exceeds maximum length\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener todos los clubs",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Number of clubs > ' + 0, function () {\r",
+							"   var data = pm.response.json()\r",
+							"   pm.expect(data.length).to.greaterThan(0)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/clubs",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"clubs"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener todos los clubs",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/clubs",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"clubs"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"bca711e3-13da-4dea-9a50-a24db161dccf\",\n        \"nombre\": \"Nogales\",\n        \"fechaDeFundacion\": \"1980-10-10T05:00:00.000Z\",\n        \"descripcion\": \"El mejor club del mundo mundial\",\n        \"imagen\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEZm8xsQj1ubVd9SSW_f_zjRvQSpKHyAqQ1ys5F7S6Obi_mhEUN_ghcBvO6rzKfHDHSuM&usqp=CAU\"\n    },\n    {\n        \"id\": \"6e570137-f2e2-468a-b290-66e56ca19d50\",\n        \"nombre\": \"Nogales\",\n        \"fechaDeFundacion\": \"1980-10-10T05:00:00.000Z\",\n        \"descripcion\": \"El mejor club del mundo mundial\",\n        \"imagen\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEZm8xsQj1ubVd9SSW_f_zjRvQSpKHyAqQ1ys5F7S6Obi_mhEUN_ghcBvO6rzKfHDHSuM&usqp=CAU\"\n    },\n    {\n        \"id\": \"ce09964a-689b-4707-81e2-a13e767487d6\",\n        \"nombre\": \"Nogales\",\n        \"fechaDeFundacion\": \"1980-10-10T05:00:00.000Z\",\n        \"descripcion\": \"El mejor club del mundo mundial\",\n        \"imagen\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEZm8xsQj1ubVd9SSW_f_zjRvQSpKHyAqQ1ys5F7S6Obi_mhEUN_ghcBvO6rzKfHDHSuM&usqp=CAU\"\n    },\n    {\n        \"id\": \"2bc4b4fa-0416-4f11-a185-ba87f4c94dcd\",\n        \"nombre\": \"Nogales\",\n        \"fechaDeFundacion\": \"1980-10-10T05:00:00.000Z\",\n        \"descripcion\": \"El mejor club del mundo mundial\",\n        \"imagen\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEZm8xsQj1ubVd9SSW_f_zjRvQSpKHyAqQ1ys5F7S6Obi_mhEUN_ghcBvO6rzKfHDHSuM&usqp=CAU\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Obtener un club por id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/clubs/{{club_id}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"clubs",
+						"{{club_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener un club por id",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/clubs/{{club_id}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"clubs",
+								"{{club_id}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"id\": \"2bc4b4fa-0416-4f11-a185-ba87f4c94dcd\",\r\n    \"nombre\": \"Nogales\",\r\n    \"fechaDeFundacion\": \"1980-10-10T05:00:00.000Z\",\r\n    \"descripcion\": \"El mejor club del mundo mundial\",\r\n    \"imagen\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEZm8xsQj1ubVd9SSW_f_zjRvQSpKHyAqQ1ys5F7S6Obi_mhEUN_ghcBvO6rzKfHDHSuM&usqp=CAU\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener un club por id inválido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The club with the given id was not found\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/clubs/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"clubs",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener un club por id inválido",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/clubs/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"clubs",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"statusCode\": 404,\r\n    \"message\": \"The club with the given id was not found\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar un club",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Nogales 2.0\",\r\n    \"fechaDeFundacion\":\"1980-10-10\",\r\n    \"descripcion\":\"El mejor club del mundo mundial\",\r\n    \"imagen\":\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEZm8xsQj1ubVd9SSW_f_zjRvQSpKHyAqQ1ys5F7S6Obi_mhEUN_ghcBvO6rzKfHDHSuM&usqp=CAU\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/clubs/{{club_id}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"clubs",
+						"{{club_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar un club",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\":\"Nogales 2.0\",\r\n    \"fechaDeFundacion\":\"1980-10-10\",\r\n    \"descripcion\":\"El mejor club del mundo mundial\",\r\n    \"imagen\":\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEZm8xsQj1ubVd9SSW_f_zjRvQSpKHyAqQ1ys5F7S6Obi_mhEUN_ghcBvO6rzKfHDHSuM&usqp=CAU\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/clubs/{{club_id}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"clubs",
+								"{{club_id}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"2bc4b4fa-0416-4f11-a185-ba87f4c94dcd\",\n    \"nombre\": \"Nogales 2.0\",\n    \"fechaDeFundacion\": \"1980-10-10\",\n    \"descripcion\": \"El mejor club del mundo mundial\",\n    \"imagen\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEZm8xsQj1ubVd9SSW_f_zjRvQSpKHyAqQ1ys5F7S6Obi_mhEUN_ghcBvO6rzKfHDHSuM&usqp=CAU\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar un club con id inválido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The club with the given id was not found\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Nogales 2.0\",\r\n    \"fechaDeFundacion\":\"1980-10-10\",\r\n    \"descripcion\":\"El mejor club del mundo mundial\",\r\n    \"imagen\":\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEZm8xsQj1ubVd9SSW_f_zjRvQSpKHyAqQ1ys5F7S6Obi_mhEUN_ghcBvO6rzKfHDHSuM&usqp=CAU\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/clubs/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"clubs",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar un club con id inválido",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\":\"Nogales 2.0\",\r\n    \"fechaDeFundacion\":\"1980-10-10\",\r\n    \"descripcion\":\"El mejor club del mundo mundial\",\r\n    \"imagen\":\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEZm8xsQj1ubVd9SSW_f_zjRvQSpKHyAqQ1ys5F7S6Obi_mhEUN_ghcBvO6rzKfHDHSuM&usqp=CAU\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/clubs/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"clubs",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The club with the given id was not found\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Borrar un club",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/clubs/{{club_id}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"clubs",
+						"{{club_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Borrar un socio",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/clubs/{{club_id}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"clubs",
+								"{{club_id}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Borrar un club con id inválido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The club with the given id was not found\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/clubs/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"clubs",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Borrar un club inválido",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/clubs/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"clubs",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The club with the given id was not found\"\n}"
+				}
+			]
+		}
+	]
+}

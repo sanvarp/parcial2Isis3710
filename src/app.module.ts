@@ -13,10 +13,10 @@ import { SocioClubModule } from './socio-club/socio-club.module';
   imports: [SocioModule, ClubModule, TypeOrmModule.forRoot({
     type: 'postgres',
     host: 'localhost',
-    port: 5433,
+    port: 5432,
     username: 'postgres',
     password: 'postgres',
-    database: 'proyecto',
+    database: 'parcial',
     entities: [ClubEntity, SocioEntity],
     dropSchema: true,
     synchronize: true,

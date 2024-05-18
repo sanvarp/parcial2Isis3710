@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Column, Entity, PrimaryGeneratedColumn,ManyToMany } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn,ManyToMany,JoinTable } from 'typeorm';
 import { SocioEntity } from "../socio/socio.entity";
 @Entity()
 export class ClubEntity {
@@ -19,5 +19,6 @@ export class ClubEntity {
  imagen: string;
 
  @ManyToMany(() => SocioEntity, socio => socio.clubes)
+ @JoinTable()
  socios: SocioEntity[];
 }
