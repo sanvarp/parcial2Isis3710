@@ -1,12 +1,261 @@
 {
 	"info": {
-		"_postman_id": "1f1569dc-d258-4d50-9100-57c74cbee23d",
+		"_postman_id": "7aed5799-8bdb-4319-8088-195285fa02b9",
 		"name": "ClubSocio",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "25545280",
-		"_collection_link": "https://isis2603-202310-s4-e6-streaming-back.postman.co/workspace/Workspace-WEB~f4c92f2c-812b-4f94-a765-ad03630be70c/collection/25545280-1f1569dc-d258-4d50-9100-57c74cbee23d?action=share&source=collection_link&creator=25545280"
+		"_collection_link": "https://isis2603-202310-s4-e6-streaming-back.postman.co/workspace/Parcial-2~39e59d57-8bcd-4c7a-b51d-955b1f56f8b3/collection/25545280-7aed5799-8bdb-4319-8088-195285fa02b9?action=share&source=collection_link&creator=25545280"
 	},
 	"item": [
+		{
+			"name": "Crear socio",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.environment.set(\"member_id\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombreDeUsuario\":\"Santiago Vargas\",\r\n    \"fechaDeNacimiento\":\"2002-12-09\",\r\n    \"correoElectronico\":\"sanvarp@hotmail.es\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/members",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"members"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear socio",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombreDeUsuario\":\"Santiago Vargas\",\r\n    \"fechaDeNacimiento\":\"2002-12-09\",\r\n    \"correoElectronico\":\"sanvarp@hotmail.es\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/members",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"members"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"nombreDeUsuario\": \"Santiago Vargas\",\n    \"fechaDeNacimiento\": \"2002-12-09\",\n    \"correoElectronico\": \"sanvarp@hotmail.es\",\n    \"id\": \"fd964df1-f02b-4037-a909-267b433fef3b\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Crear socio 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.environment.set(\"member_id1\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombreDeUsuario\":\"Santiago Vargas\",\r\n    \"fechaDeNacimiento\":\"2002-12-09\",\r\n    \"correoElectronico\":\"sanvarp@hotmail.es\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/members",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"members"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear socio 2",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombreDeUsuario\":\"Santiago Vargas\",\r\n    \"fechaDeNacimiento\":\"2002-12-09\",\r\n    \"correoElectronico\":\"sanvarp@hotmail.es\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/members",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"members"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"nombreDeUsuario\": \"Santiago Vargas\",\n    \"fechaDeNacimiento\": \"2002-12-09\",\n    \"correoElectronico\": \"sanvarp@hotmail.es\",\n    \"id\": \"fd964df1-f02b-4037-a909-267b433fef3b\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Crear club",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.environment.set(\"club_id\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Nogales\",\r\n    \"fechaDeFundacion\":\"1980-10-10\",\r\n    \"descripcion\":\"El mejor club del mundo mundial\",\r\n    \"imagen\":\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEZm8xsQj1ubVd9SSW_f_zjRvQSpKHyAqQ1ys5F7S6Obi_mhEUN_ghcBvO6rzKfHDHSuM&usqp=CAU\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/clubs",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"clubs"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear club",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\":\"Nogales\",\r\n    \"fechaDeFundacion\":\"1980-10-10\",\r\n    \"descripcion\":\"El mejor club del mundo mundial\",\r\n    \"imagen\":\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEZm8xsQj1ubVd9SSW_f_zjRvQSpKHyAqQ1ys5F7S6Obi_mhEUN_ghcBvO6rzKfHDHSuM&usqp=CAU\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/members",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"members"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"nombre\": \"Nogales\",\n    \"fechaDeFundacion\": \"1980-10-10\",\n    \"descripcion\": \"El mejor club del mundo mundial\",\n    \"imagen\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEZm8xsQj1ubVd9SSW_f_zjRvQSpKHyAqQ1ys5F7S6Obi_mhEUN_ghcBvO6rzKfHDHSuM&usqp=CAU\",\n    \"id\": \"7f7d0914-2a40-4672-be98-88bab785a78d\"\n}"
+				}
+			]
+		},
 		{
 			"name": "Agregar un socio a un club",
 			"event": [
@@ -581,10 +830,10 @@
 					},
 					"status": "No Content",
 					"code": 204,
-					"_postman_previewlanguage": null,
-					"header": null,
+					"_postman_previewlanguage": "Text",
+					"header": [],
 					"cookie": [],
-					"body": null
+					"body": ""
 				}
 			]
 		},
